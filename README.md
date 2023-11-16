@@ -10,8 +10,9 @@ The task was to create an advice generator app where users can view the optimal 
 
 
 ## Links
-Solution URL: Add solution URL here
-Live Site URL: Add live site URL here
+* [GitHub Repository](https://github.com/suleosmann/advice-generator-app)
+* [Live Site](https://advice-generator-app-zeta-pink.vercel.app/)
+
 ## My process
 ### Built with
 Semantic HTML5 markup
