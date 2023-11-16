@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap');
+:root {
+  --light-cyan: hsl(193, 38%, 86%);
+  --neon-green: hsl(150, 100%, 66%);
+  --grayish-blue: hsl(217, 19%, 38%);
+  --dark-grayish-blue: hsl(217, 19%, 24%);
+  --dark-blue: hsl(218, 23%, 16%);
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: var(--dark-blue);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+}
+
+.advice-card{
+  text-align: center;
+  background-color: var(--dark-grayish-blue);
+  width: 30%;
+  height: 300px;
+  margin: 15% auto;
+  border-radius: 19px;
+  padding: 20px;
+  position: relative;
+}
+.advice-title {
+  color: var(--neon-green);
+  font-size: 18px;
+  padding-top: 28px;
+}
+
+.advice-text {
+  color: var(--light-cyan);
+  font-size: 28px;
+  margin-top: 15px;
+}
+.dice-container {
+  position: absolute;
+  bottom: -25px; 
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1; 
+  background-color: var(--neon-green);
+  border-radius: 50%;
+  box-shadow: 0 0 1px var(--neon-green); 
+  transition: box-shadow 0.3s ease-in-out;
+}
+.dice-container:hover {
+  box-shadow: 0 0 20px var(--neon-green); 
+}
+
+.dice-img {
+  width: 20px;
+  height: 20px;
+  padding: 18px;
+  cursor: pointer;
+}
+
+
+.divider{
+  position: absolute;
+  left: 12%;
+  bottom: 85px;
+}
+
+/* New styles for mobile responsiveness */
+@media (max-width: 768px) {
+  .advice-card {
+    width: 90%; 
+    height: auto; 
+    margin: 50% auto; 
+    padding: 10px; 
+  }
+
+  .divider {
+    content: url('../public/pattern-divider-mobile.svg'); 
+    bottom: 50px; 
+    width: 80%;
+  }
+
+  .advice-title {
+    font-size: 16px; 
+    padding-top: 20px; 
+  }
+
+  .advice-text {
+    font-size: 20px; 
+    margin-top: 10px; 
+    margin-bottom: 80px;
+  }
+
+  .dice-img {
+    width: 25px; 
+    height: 25px; 
+    padding: 10px; 
+  }
+
+  .dice-container {
+    bottom: -15px; 
+  }
+}
