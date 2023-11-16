@@ -1,28 +1,31 @@
 import React, { useEffect, useState } from 'react';
 
-const AdviceCard = ({ initialAdvice, adviceNumber }) => {
-  const [nextAdvice, setNextAdvice] = useState("");
-  const [nextAdviceNumber, setNextAdviceNumber] = useState(adviceNumber);
+const AdviceCard = () => {
+  const [advice, setAdvice] = useState('');
+  const [adviceNumber, setAdviceNumber] = useState(1);
 
   useEffect(() => {
-    setNextAdvice(initialAdvice);
-  }, [initialAdvice]);
+    fetchAdvice(); // Fetch initial advice when component mounts
+  }, []);
+
+  const fetchAdvice = () => {
+    fetch('https://api.adviceslip.com/advice')
+      .then(resp => resp.json())
+      .then(data => {
+        setAdvice(data.slip.advice);
+        setAdviceNumber(data.slip_id);
+      })
+      .catch(error => console.error(error));
+  };
 
   const handleDiceClick = () => {
-    // Fetch the next advice or quote when the dice is clicked
-    fetch("https://api.adviceslip.com/advice")
-      .then((resp) => resp.json())
-      .then((data) => {
-        setNextAdvice(data.slip.advice);
-        setNextAdviceNumber(data.slip.id); // Update the next advice number
-      })
-      .catch((error) => console.error(error));
+    fetchAdvice(); // Fetch new advice on dice click
   };
 
   return (
     <div className="advice-card">
-      <h2 className="advice-title">ADVICE #{nextAdviceNumber}</h2>
-      {nextAdvice && <p className="advice-text">{nextAdvice}</p>}
+      <h2 className="advice-title">ADVICE #{adviceNumber}</h2>
+      {advice && <p className="advice-text">{advice}</p>}
       <img
         src="/pattern-divider-desktop.svg"
         alt="Pattern Divider"
